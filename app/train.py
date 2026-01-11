@@ -18,7 +18,7 @@ def arg_parse():
     """
     
     parser = ArgumentParser(
-        description="Data Preparation Script")
+        description="Fine tune a custom model")
     
     parser.add_argument("--data_path", type=str,
                 required=True,
@@ -33,7 +33,7 @@ def arg_parse():
     parser.add_argument("--model_name", type=str,
                 required=True,
                 action="store", metavar="MODEL_NAME",
-                help="The name of the model. Supported pretrained models are resnet, vgg, mobilenet family from pytorch ")
+                help="The name of the model. Supported pretrained models are resnet, vgg, mobilenet family from pytorch official site ")
     
     parser.add_argument("--monitor_metric_name", type=str,
                 required=False, choices=["accuracy", "loss"], default="accuracy",
@@ -217,7 +217,7 @@ def train_model(args: ArgumentParser):
     
     
     for epoch in range(args.epochs): # Keep it short for the task demo
-        print(f"Epoch {epoch}")
+        print(f"Epoch {epoch+1}")
         
         # train for an epoch
         metrics = train_epoch(

@@ -34,7 +34,6 @@ def arg_parse():
                 required=True,
                 action="store", metavar="PATH",
                 help="The path to the csv file containing the label information.")
-    
 
     parser.add_argument("--test_size", type=float_0_1_range,
                             required=False, action="store", metavar="TEST_SIZE",
@@ -42,7 +41,7 @@ def arg_parse():
     
     parser.add_argument("--validation_size", type=float_0_1_range,
                             required=False, action="store", metavar="VAL_SIZE",
-                            default=0.1, help="The size of the validation set.")
+                            default=0.1, help="The percentage of the train set utilized for validation.")
     
     args = parser.parse_args()
     
@@ -64,7 +63,7 @@ def structure_dataset(image_path: str,
         label_path (str): the path to the csv file.
         out_path (str, optional): the directory that will contain the directory structure. Defaults to ".".
         test_size (float, optional): The size of the test set. Defaults to 0.3.
-        validation_size (float, optional): The size of the validation set. Defaults to 0.3.
+        validation_size (float, optional): The percentage of the train set utilized for validation. Defaults to 0.3.
     """
     
     # create destination folder
