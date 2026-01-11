@@ -1,0 +1,8 @@
+__pycache__
+.git
+venv/
+.env
+.ipynb_checkpoints
+models/*.pth 
+# (Note: We usually ignore large model weights and map them via volumes instead, 
+# but if you want the image to be self-contained, remove the line above)

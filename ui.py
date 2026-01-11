@@ -2,6 +2,10 @@ import streamlit as st
 import requests
 from PIL import Image
 import io
+from os import getenv
+
+# Read the url from environment variable
+API_URL = getenv("API_URL", "http://127.0.0.1:8000")
 
 # create the title and the subtitle
 st.title("Cats & Dogs Classifier")
@@ -36,7 +40,7 @@ if uploaded_file is not None:
             
             try:
                 # assuming FastAPI runs on localhost:8000
-                response = requests.post("http://127.0.0.1:8000/predict", files=files, data=data)
+                response = requests.post(f"{API_URL}/predict", files=files, data=data)
                 result = response.json()
                 
                 # return the predicted class along with the prediction confidence

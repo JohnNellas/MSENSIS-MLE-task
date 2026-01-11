@@ -1,0 +1,25 @@
+services:
+  # The FastAPI Backend
+  api:
+    build: .
+    container_name: cat_dog_api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - ./checkpoints:/app/checkpoints  # Persist trained checkpoints
+      # - ./data:/app/data      # Access data if needed
+    ports:
+      - "8000:8000"
+
+  # The Streamlit Frontend
+  ui:
+    build: .
+    container_name: cat_dog_ui
+    command: streamlit run ui.py
+    volumes:
+      - ./checkpoints:/app/checkpoints # UI might need model config access
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000  # distinct service name 'api'
+    depends_on:
+      - api  # Wait for API to start before starting UI

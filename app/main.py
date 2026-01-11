@@ -38,6 +38,7 @@ async def predict(
     else:
         res = predict_finetuned(image, model_type)
     
+    
     label, confidence = res["class_prediction"], res["confidence"] 
     
     return {

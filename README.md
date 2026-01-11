@@ -4,12 +4,14 @@
 This is the repository for the Machine Learning Engineering Task at MSensis for a dog/cat classifier. Specifically this is a full-stack ML application that utilized either a pre-trained Vision Transformer (ViT) from Hugging Face or a fine tuned model (Only Mobilenet_v3_small is currently supported).
 
 ## Tech Stack
+* **Python:** 3.10
 * **Model:** Hugging Face Transformers, PyTorch
 * **Data:** Pandas, NumPy
 * **Backend:** FastAPI
 * **Frontend:** Streamlit
 
 ## Setup Instructions
+
 1.  Install dependencies:
 
     `pip install -r requirements.txt`
@@ -68,13 +70,22 @@ This is the repository for the Machine Learning Engineering Task at MSensis for 
     --device DEVICE       The utilized device.
     ```
 
-4.  Start FastAPI Backend: 
+- You can get the app running by executing the following command:
 
-    `uvicorn app.main:app --reload`
+    - First way:
 
-5.  Start Streamlit Frontend: 
+    1.  Start FastAPI Backend: 
 
-    `streamlit run ui.py`
+        `uvicorn app.main:app --reload`
+
+    2.  Start Streamlit Frontend: 
+
+        `streamlit run ui.py`
+
+    - Second way (by using **Docker**):
+
+        `docker compose up --build`
+
 
 ## Architecture Decisions
 
